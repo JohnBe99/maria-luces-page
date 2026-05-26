@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Servicios — Maria Luces</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F7F2EA;--warm:#FDFAF5;--blush:#E8C4B0;--terra:#B85C42;--deep:#2C1F1A;--muted:#7A6358;--accent:#D4956A;--gold:#C8A882}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--warm);color:var(--deep);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:0 4rem;height:64px;background:rgba(253,250,245,0.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(200,168,130,0.25)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.15rem;letter-spacing:.06em;color:var(--deep);text-decoration:none;font-style:italic}
+.nav-links{display:flex;gap:0;list-style:none}
+.nav-links a{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--muted);padding:.4rem 1.1rem;border-bottom:2px solid transparent;transition:all .2s;display:block;line-height:64px}
+.nav-links a:hover{color:var(--terra)}
+.nav-links a.active{color:var(--terra);border-bottom:2px solid var(--terra)}
+.page-header{padding:130px 5rem 5rem;background:var(--cream)}
+.eyebrow{font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem;display:flex;align-items:center;gap:.75rem}
+.eyebrow::before{content:'';display:inline-block;width:28px;height:1px;background:var(--accent)}
+.page-header h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4rem);line-height:1.08;color:var(--deep)}
+.page-header h1 em{display:block;font-style:italic;color:var(--terra)}
+.page-header p{font-size:1rem;color:var(--muted);margin-top:1rem;max-width:520px;line-height:1.75}
+section{padding:5rem 5rem}
+.slabel{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--accent);margin-bottom:.6rem}
+.stitle{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.15;color:var(--deep);margin-bottom:1rem}
+.sdivider{width:48px;height:2px;background:var(--gold);margin:1.2rem 0 2rem}
+footer{background:var(--deep);color:rgba(255,255,255,.35);text-align:center;padding:2.2rem;font-size:.7rem;letter-spacing:.12em}
+footer span{color:var(--gold)}footer a{color:var(--gold);text-decoration:none}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.8rem 1.9rem;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .22s;font-family:'DM Sans',sans-serif;cursor:pointer;border:none}
+.btn-primary{background:var(--terra);color:white}.btn-primary:hover{background:var(--deep);transform:translateY(-2px)}
+.btn-outline{border:1px solid var(--gold);color:var(--muted);background:transparent}.btn-outline:hover{border-color:var(--terra);color:var(--terra)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.fadein{animation:fadeUp .65s ease both}
+@media(max-width:900px){nav{padding:0 1.2rem}.nav-links a{padding:.4rem .55rem;font-size:.62rem;line-height:64px}section{padding:3.5rem 1.5rem}.page-header{padding:110px 1.5rem 3rem}}
+
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
+.srv{background:var(--cream);padding:2.5rem 2rem;border-top:3px solid var(--terra);transition:transform .2s}
+.srv:hover{transform:translateY(-4px)}
+.srv-icon{font-size:2.2rem;margin-bottom:1rem}
+.srv h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--deep);margin-bottom:.6rem}
+.srv p{font-size:.86rem;color:var(--muted);line-height:1.7;margin-bottom:1rem}
+.srv-list{list-style:none;display:flex;flex-direction:column;gap:.35rem}
+.srv-list li{font-size:.8rem;color:var(--muted);display:flex;align-items:center;gap:.5rem}
+.srv-list li::before{content:'→';color:var(--terra);font-size:.75rem;flex-shrink:0}
+.process{background:var(--cream);padding:5rem}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2.5rem;position:relative}
+.process-steps::before{content:'';position:absolute;top:28px;left:calc(12.5% + 14px);right:calc(12.5% + 14px);height:1px;background:var(--gold);opacity:.4}
+.step{text-align:center;position:relative}
+.step-num{width:56px;height:56px;border-radius:50%;background:var(--terra);color:white;font-family:'Playfair Display',serif;font-size:1.3rem;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem}
+.step h4{font-family:'Playfair Display',serif;font-size:.95rem;color:var(--deep);margin-bottom:.4rem}
+.step p{font-size:.8rem;color:var(--muted);line-height:1.6}
+@media(max-width:900px){.services-grid{grid-template-columns:1fr}.process-steps{grid-template-columns:1fr 1fr}.process-steps::before{display:none}}
+
+</style><nav>
+  <a class="nav-logo" href="index.html">Maria Luces</a>
+  <ul class="nav-links"><li><a href="index.html">Sobre mí</a></li><li><a href="experiencia.html">Experiencia</a></li><li><a href="portafolio.html">Portafolio</a></li><li><a href="servicios.html" class="active">Servicios</a></li><li><a href="planes.html">Planes</a></li><li><a href="contacto.html">Contacto</a></li></ul>
+</nav>
+<main>
+<div class="page-header">
+  <p class="eyebrow">Lo que ofrezco</p>
+  <h1>Servicios<em>de diseño</em></h1>
+  <p>Soluciones visuales completas para marcas que quieren comunicar con claridad, estilo y coherencia.</p>
+</div>
+
+<section style="background:var(--warm)">
+  <p class="slabel">Áreas de trabajo</p>
+  <h2 class="stitle">¿En qué puedo ayudarte?</h2>
+  <div class="sdivider"></div>
+  <div class="services-grid">
+    <div class="srv">
+      <div class="srv-icon">🎨</div>
+      <h3>Identidad Visual & Branding</h3>
+      <p>Creo la personalidad visual de tu marca desde cero, asegurando coherencia en todos los puntos de contacto.</p>
+      <ul class="srv-list">
+        <li>Diseño de logotipo</li><li>Manual de marca</li><li>Paleta de colores & tipografía</li><li>Papelería corporativa</li><li>Sistema de identidad completo</li>
+      </ul>
+    </div>
+    <div class="srv">
+      <div class="srv-icon">📱</div>
+      <h3>Social Media & Contenido Digital</h3>
+      <p>Piezas visuales que generan engagement, transmiten tu mensaje y mantienen coherencia de marca en redes.</p>
+      <ul class="srv-list">
+        <li>Posts para Instagram & Facebook</li><li>Stories & Reels (diseño)</li><li>Banners y publicidad digital</li><li>Plantillas personalizadas</li><li>Packs de contenido mensual</li>
+      </ul>
+    </div>
+    <div class="srv">
+      <div class="srv-icon">🖨</div>
+      <h3>Material Impreso & Editorial</h3>
+      <p>Diseño de piezas físicas listas para imprenta, con atención al detalle en composición y especificaciones técnicas.</p>
+      <ul class="srv-list">
+        <li>Flyers & volantes</li><li>Catálogos & brochures</li><li>Tarjetas de presentación</li><li>Afiches & pósters</li><li>Menús & cartas</li>
+      </ul>
+    </div>
+    <div class="srv">
+      <div class="srv-icon">🎬</div>
+      <h3>Video & Motion Graphics</h3>
+      <p>Edición de video y animaciones básicas para contenido de marca en plataformas digitales.</p>
+      <ul class="srv-list">
+        <li>Edición de reels</li><li>Intro & outro de marca</li><li>Stories animadas</li><li>Montaje de contenido</li>
+      </ul>
+    </div>
+    <div class="srv">
+      <div class="srv-icon">📊</div>
+      <h3>Presentaciones Corporativas</h3>
+      <p>Presentaciones profesionales en PowerPoint o PDF que comunican con claridad e impresionan visualmente.</p>
+      <ul class="srv-list">
+        <li>Presentaciones de marca</li><li>Pitch decks</li><li>Informes & reportes</li><li>Plantillas corporativas</li>
+      </ul>
+    </div>
+    <div class="srv">
+      <div class="srv-icon">✨</div>
+      <h3>Rediseño & Actualización</h3>
+      <p>Moderniza tu identidad visual sin perder la esencia que ya construiste con tu audiencia.</p>
+      <ul class="srv-list">
+        <li>Rediseño de logo</li><li>Actualización de marca</li><li>Unificación de identidad</li><li>Auditoría visual</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <p class="slabel">Cómo trabajo</p>
+  <h2 class="stitle">Mi proceso creativo</h2>
+  <div class="sdivider"></div>
+  <div class="process-steps">
+    <div class="step"><div class="step-num">01</div><h4>Briefing</h4><p>Escucho tus objetivos, necesidades y referencias para entender a fondo tu proyecto.</p></div>
+    <div class="step"><div class="step-num">02</div><h4>Propuesta</h4><p>Presento conceptos visuales alineados con tu marca y esperamos tu feedback.</p></div>
+    <div class="step"><div class="step-num">03</div><h4>Desarrollo</h4><p>Refinamos la propuesta elegida con ajustes hasta que quede exactamente como lo imaginas.</p></div>
+    <div class="step"><div class="step-num">04</div><h4>Entrega</h4><p>Recibes todos los archivos finales en los formatos que necesitas, listos para usar.</p></div>
+  </div>
+</section>
+
+<div style="background:var(--deep);padding:5rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center">
+  <div>
+    <p style="font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem">¿Tienes dudas?</p>
+    <h2 style="font-family:'Playfair Display',serif;font-size:2rem;color:white;line-height:1.2">Cada proyecto es único — hablemos de lo que necesitas</h2>
+    <p style="font-size:.9rem;color:rgba(255,255,255,.5);margin-top:1rem;line-height:1.75">Si no encuentras exactamente lo que buscas, contáctame. Adapto mis servicios a las necesidades específicas de cada cliente.</p>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:1rem;align-items:flex-start">
+    <a href="planes.html" class="btn btn-primary">Ver planes y precios</a>
+    <a href="contacto.html" class="btn btn-outline" style="border-color:var(--gold);color:var(--gold)">Solicitar cotización</a>
+  </div>
+</div>
+</main>
+<footer>
+  <p>© 2025 <span>Maria Luces</span> — Diseñadora Gráfica Freelancer · 
+  <a href="mailto:Mariainesluces20@gmail.com">Mariainesluces20@gmail.com</a> · 
+  <a href="https://wa.me/573025368303">WhatsApp</a></p>
+</footer></body></html>
