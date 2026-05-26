@@ -7,62 +7,111 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{--cream:#F7F2EA;--warm:#FDFAF5;--blush:#E8C4B0;--terra:#B85C42;--deep:#2C1F1A;--muted:#7A6358;--accent:#D4956A;--gold:#C8A882}
-*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{background:var(--warm);color:var(--deep);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:0 4rem;height:64px;background:rgba(253,250,245,0.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(200,168,130,0.25)}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;background:rgba(253,250,245,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(200,168,130,0.25);display:flex;justify-content:space-between;align-items:center;padding:0 2rem}
 .nav-logo{font-family:'Playfair Display',serif;font-size:1.15rem;letter-spacing:.06em;color:var(--deep);text-decoration:none;font-style:italic}
 .nav-links{display:flex;gap:0;list-style:none}
-.nav-links a{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--muted);padding:.4rem 1.1rem;border-bottom:2px solid transparent;transition:all .2s;display:block;line-height:64px}
+.nav-links a{font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;text-decoration:none;color:var(--muted);padding:.3rem .9rem;border-bottom:2px solid transparent;transition:all .2s;display:block;line-height:60px}
 .nav-links a:hover{color:var(--terra)}
 .nav-links a.active{color:var(--terra);border-bottom:2px solid var(--terra)}
-.page-header{padding:130px 5rem 5rem;background:var(--cream)}
-.eyebrow{font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem;display:flex;align-items:center;gap:.75rem}
-.eyebrow::before{content:'';display:inline-block;width:28px;height:1px;background:var(--accent)}
-.page-header h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4rem);line-height:1.08;color:var(--deep)}
-.page-header h1 em{display:block;font-style:italic;color:var(--terra)}
-.page-header p{font-size:1rem;color:var(--muted);margin-top:1rem;max-width:520px;line-height:1.75}
-section{padding:5rem 5rem}
-.slabel{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--accent);margin-bottom:.6rem}
-.stitle{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.15;color:var(--deep);margin-bottom:1rem}
-.sdivider{width:48px;height:2px;background:var(--gold);margin:1.2rem 0 2rem}
-footer{background:var(--deep);color:rgba(255,255,255,.35);text-align:center;padding:2.2rem;font-size:.7rem;letter-spacing:.12em}
-footer span{color:var(--gold)}footer a{color:var(--gold);text-decoration:none}
-.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.8rem 1.9rem;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .22s;font-family:'DM Sans',sans-serif;cursor:pointer;border:none}
-.btn-primary{background:var(--terra);color:white}.btn-primary:hover{background:var(--deep);transform:translateY(-2px)}
-.btn-outline{border:1px solid var(--gold);color:var(--muted);background:transparent}.btn-outline:hover{border-color:var(--terra);color:var(--terra)}
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-.fadein{animation:fadeUp .65s ease both}
-@media(max-width:900px){nav{padding:0 1.2rem}.nav-links a{padding:.4rem .55rem;font-size:.62rem;line-height:64px}section{padding:3.5rem 1.5rem}.page-header{padding:110px 1.5rem 3rem}}
 
-.contact-layout{display:grid;grid-template-columns:1fr 1.3fr;gap:0;min-height:60vh}
-.contact-info{background:var(--deep);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center}
-.contact-info h2{font-family:'Playfair Display',serif;font-size:1.8rem;color:white;margin-bottom:1rem;line-height:1.3}
-.contact-info p{font-size:.9rem;color:rgba(255,255,255,.55);line-height:1.8;margin-bottom:2rem}
-.ci-list{display:flex;flex-direction:column;gap:1.2rem}
-.ci-item{display:flex;align-items:center;gap:1rem}
-.ci-icon{width:40px;height:40px;border:1px solid rgba(200,168,130,.3);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:.95rem;flex-shrink:0}
-.ci-label{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.15rem}
-.ci-val{font-size:.88rem;color:rgba(255,255,255,.8);text-decoration:none;transition:color .2s}
+/* hamburger */
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.4rem;background:none;border:none;z-index:300}
+.ham span{display:block;width:24px;height:2px;background:var(--deep);transition:all .3s;transform-origin:center}
+.ham.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.ham.open span:nth-child(2){opacity:0}
+.ham.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;inset:0;top:60px;background:var(--warm);z-index:150;flex-direction:column;padding:2rem;gap:.5rem}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:1.3rem;font-family:'Playfair Display',serif;color:var(--deep);text-decoration:none;padding:1rem 0;border-bottom:1px solid rgba(200,168,130,.2);transition:color .2s}
+.mobile-menu a:hover,.mobile-menu a.active{color:var(--terra)}
+
+/* ── PAGE HEADER ── */
+.page-header{padding:100px 2rem 3rem;background:var(--cream)}
+.eyebrow{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--accent);margin-bottom:.65rem;display:flex;align-items:center;gap:.65rem}
+.eyebrow::before{content:'';display:inline-block;width:24px;height:1px;background:var(--accent)}
+.page-header h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,8vw,4rem);line-height:1.08;color:var(--deep)}
+.page-header h1 em{display:block;font-style:italic;color:var(--terra)}
+.page-header p{font-size:.95rem;color:var(--muted);margin-top:.85rem;max-width:520px;line-height:1.75}
+
+/* ── UTILS ── */
+.sec{padding:3.5rem 2rem}
+.slabel{font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--accent);margin-bottom:.55rem}
+.stitle{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,5vw,2.5rem);line-height:1.15;color:var(--deep);margin-bottom:.75rem}
+.sdivider{width:40px;height:2px;background:var(--gold);margin:1rem 0 1.8rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 1.8rem;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:all .22s;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;-webkit-tap-highlight-color:transparent}
+.btn-primary{background:var(--terra);color:white}
+.btn-primary:hover{background:var(--deep)}
+.btn-outline{border:1px solid var(--gold);color:var(--muted);background:transparent}
+.btn-outline:hover{border-color:var(--terra);color:var(--terra)}
+
+/* ── FOOTER ── */
+footer{background:var(--deep);color:rgba(255,255,255,.35);text-align:center;padding:2rem 1.5rem;font-size:.7rem;letter-spacing:.1em;line-height:1.8}
+footer span{color:var(--gold)}
+footer a{color:var(--gold);text-decoration:none}
+
+/* ── DESKTOP overrides ── */
+@media(min-width:768px){
+  nav{padding:0 3rem;height:64px}
+  .nav-links a{line-height:64px;padding:.3rem 1rem}
+  .ham{display:none!important}
+  .page-header{padding:120px 5rem 4.5rem}
+  .sec{padding:5rem}
+}
+@media(max-width:767px){
+  .nav-links{display:none}
+  .ham{display:flex}
+}
+
+.contact-layout{display:flex;flex-direction:column}
+.contact-info{background:var(--deep);padding:3rem 2rem}
+.contact-info h2{font-family:'Playfair Display',serif;font-size:1.5rem;color:white;margin-bottom:.75rem;line-height:1.35}
+.contact-info>p{font-size:.88rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:1.8rem}
+.ci-list{display:flex;flex-direction:column;gap:1rem}
+.ci-item{display:flex;align-items:center;gap:.9rem}
+.ci-icon{width:38px;height:38px;border:1px solid rgba(200,168,130,.3);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:.9rem;flex-shrink:0}
+.ci-label{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:.12rem}
+.ci-val{font-size:.86rem;color:rgba(255,255,255,.78);text-decoration:none;transition:color .2s}
 .ci-val:hover{color:var(--gold)}
-.social-row{display:flex;gap:.75rem;margin-top:2rem}
-.social-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem 1.1rem;border:1px solid rgba(200,168,130,.25);color:rgba(255,255,255,.6);text-decoration:none;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;transition:all .2s}
+.social-row{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:1.8rem}
+.social-btn{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem 1rem;border:1px solid rgba(200,168,130,.25);color:rgba(255,255,255,.6);text-decoration:none;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;transition:all .2s;-webkit-tap-highlight-color:transparent}
 .social-btn:hover{border-color:var(--terra);color:var(--gold)}
-.contact-form-wrap{background:var(--cream);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center}
-.form-group{margin-bottom:1.5rem}
-.form-group label{display:block;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
-.form-group input,.form-group textarea,.form-group select{width:100%;background:white;border:1px solid rgba(200,168,130,.3);padding:.85rem 1rem;font-size:.9rem;font-family:'DM Sans',sans-serif;color:var(--deep);outline:none;transition:border-color .2s;appearance:none}
+.contact-form-wrap{background:var(--cream);padding:3rem 2rem}
+.form-group{margin-bottom:1.3rem}
+.form-group label{display:block;font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:.45rem}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:white;border:1px solid rgba(200,168,130,.3);padding:.9rem 1rem;font-size:1rem;font-family:'DM Sans',sans-serif;color:var(--deep);outline:none;transition:border-color .2s;-webkit-appearance:none;border-radius:0}
 .form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--terra)}
-.form-group textarea{resize:vertical;min-height:120px}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.availability{background:var(--warm);padding:4rem 5rem;display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;border-top:1px solid rgba(200,168,130,.2)}
-.avail-dot{width:10px;height:10px;border-radius:50%;background:#5cb85c;display:inline-block;margin-right:.5rem;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
-@media(max-width:900px){.contact-layout{grid-template-columns:1fr}.contact-info,.contact-form-wrap{padding:3.5rem 1.5rem}.form-row{grid-template-columns:1fr}}
+.form-group textarea{resize:vertical;min-height:110px}
+.avail-bar{background:var(--warm);padding:2rem;display:flex;flex-direction:column;gap:1.2rem;border-top:1px solid rgba(200,168,130,.2)}
+.avail-dot{width:9px;height:9px;border-radius:50%;background:#5cb85c;display:inline-block;margin-right:.45rem;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.avail-stats{display:flex;gap:2rem}
+.avail-stat-num{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--terra);line-height:1}
+.avail-stat-lbl{font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:2px}
+@media(min-width:768px){
+  .contact-layout{flex-direction:row;min-height:70vh}
+  .contact-info{width:40%;padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center}
+  .contact-form-wrap{flex:1;padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center}
+  .avail-bar{flex-direction:row;justify-content:space-between;align-items:center;padding:2.5rem 5rem}
+}
 
 </style><nav>
   <a class="nav-logo" href="index.html">Maria Luces</a>
-  <ul class="nav-links"><li><a href="index.html">Sobre mí</a></li><li><a href="experiencia.html">Experiencia</a></li><li><a href="portafolio.html">Portafolio</a></li><li><a href="servicios.html">Servicios</a></li><li><a href="planes.html">Planes</a></li><li><a href="contacto.html" class="active">Contacto</a></li></ul>
+  <ul class="nav-links"><li><a href="index.html">Sobre mí</a></li><li><a href="portafolio.html">Portafolio</a></li><li><a href="servicios.html">Servicios</a></li><li><a href="planes.html">Planes</a></li><li><a href="contacto.html"class="active">Contacto</a></li></ul>
+  <button class="ham" id="ham" aria-label="Menú"><span></span><span></span><span></span></button>
 </nav>
+<div class="mobile-menu" id="mobileMenu"><a href="index.html">Sobre mí</a><a href="portafolio.html">Portafolio</a><a href="servicios.html">Servicios</a><a href="planes.html">Planes</a><a href="contacto.html"class="active">Contacto</a></div>
+<script>
+(function(){
+  var h=document.getElementById('ham'),m=document.getElementById('mobileMenu');
+  h.addEventListener('click',function(){h.classList.toggle('open');m.classList.toggle('open');document.body.style.overflow=m.classList.contains('open')?'hidden':''});
+  m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){h.classList.remove('open');m.classList.remove('open');document.body.style.overflow=''});});
+})();
+</script>
 <main>
 <div class="page-header">
   <p class="eyebrow">Hablemos</p>
@@ -73,24 +122,12 @@ footer span{color:var(--gold)}footer a{color:var(--gold);text-decoration:none}
 <div class="contact-layout">
   <div class="contact-info">
     <h2>¿Lista para crear algo increíble juntos?</h2>
-    <p>Estoy disponible para proyectos freelance remotos y presenciales. No dudes en escribirme por cualquiera de estos medios.</p>
+    <p>Disponible para proyectos freelance remotos y presenciales. Escríbeme por cualquiera de estos medios.</p>
     <div class="ci-list">
-      <div class="ci-item">
-        <div class="ci-icon">✉</div>
-        <div><p class="ci-label">Email</p><a class="ci-val" href="mailto:Mariainesluces20@gmail.com">Mariainesluces20@gmail.com</a></div>
-      </div>
-      <div class="ci-item">
-        <div class="ci-icon">☏</div>
-        <div><p class="ci-label">WhatsApp</p><a class="ci-val" href="https://wa.me/573025368303">+57 302 536 8303</a></div>
-      </div>
-      <div class="ci-item">
-        <div class="ci-icon">◈</div>
-        <div><p class="ci-label">Instagram</p><a class="ci-val" href="https://instagram.com/lucesmariia" target="_blank">@lucesmariia</a></div>
-      </div>
-      <div class="ci-item">
-        <div class="ci-icon">⌖</div>
-        <div><p class="ci-label">Ubicación</p><p class="ci-val">Bogotá, Colombia · Remoto worldwide</p></div>
-      </div>
+      <div class="ci-item"><div class="ci-icon">✉</div><div><p class="ci-label">Email</p><a class="ci-val" href="mailto:Mariainesluces20@gmail.com">Mariainesluces20@gmail.com</a></div></div>
+      <div class="ci-item"><div class="ci-icon">☏</div><div><p class="ci-label">WhatsApp</p><a class="ci-val" href="https://wa.me/573025368303">+57 302 536 8303</a></div></div>
+      <div class="ci-item"><div class="ci-icon">◈</div><div><p class="ci-label">Instagram</p><a class="ci-val" href="https://instagram.com/lucesmariia" target="_blank">@lucesmariia</a></div></div>
+      <div class="ci-item"><div class="ci-icon">⌖</div><div><p class="ci-label">Ubicación</p><p class="ci-val">Bogotá · Remoto worldwide</p></div></div>
     </div>
     <div class="social-row">
       <a href="https://instagram.com/lucesmariia" target="_blank" class="social-btn">Instagram</a>
@@ -98,66 +135,38 @@ footer span{color:var(--gold)}footer a{color:var(--gold);text-decoration:none}
       <a href="mailto:Mariainesluces20@gmail.com" class="social-btn">Email</a>
     </div>
   </div>
-
   <div class="contact-form-wrap">
     <p class="slabel">Formulario de contacto</p>
-    <h2 class="stitle" style="font-size:1.5rem">Cuéntame tu proyecto</h2>
+    <h2 class="stitle" style="font-size:1.4rem">Cuéntame tu proyecto</h2>
     <div class="sdivider"></div>
     <form onsubmit="handleSubmit(event)">
-      <div class="form-row">
-        <div class="form-group"><label>Nombre *</label><input type="text" placeholder="Tu nombre" required></div>
-        <div class="form-group"><label>Email *</label><input type="email" placeholder="tu@email.com" required></div>
-      </div>
-      <div class="form-group">
-        <label>Servicio de interés</label>
-        <select>
-          <option value="">Selecciona una opción</option>
-          <option>Identidad Visual & Branding</option>
-          <option>Social Media & Contenido Digital</option>
-          <option>Material Impreso & Editorial</option>
-          <option>Video & Motion Graphics</option>
-          <option>Presentación Corporativa</option>
-          <option>Cotización personalizada</option>
-        </select>
+      <div class="form-group"><label>Nombre *</label><input type="text" placeholder="Tu nombre" required></div>
+      <div class="form-group"><label>Email *</label><input type="email" placeholder="tu@email.com" required></div>
+      <div class="form-group"><label>Servicio de interés</label>
+        <select><option value="">Selecciona una opción</option><option>Identidad Visual & Branding</option><option>Social Media & Contenido Digital</option><option>Material Impreso & Editorial</option><option>Video & Motion Graphics</option><option>Presentación Corporativa</option><option>Cotización personalizada</option></select>
       </div>
       <div class="form-group"><label>Presupuesto aproximado</label>
-        <select>
-          <option value="">Selecciona un rango</option>
-          <option>Menos de $100 USD</option>
-          <option>$100 – $250 USD</option>
-          <option>$250 – $500 USD</option>
-          <option>Más de $500 USD</option>
-          <option>A definir</option>
-        </select>
+        <select><option value="">Selecciona un rango</option><option>Menos de $100 USD</option><option>$100 – $250 USD</option><option>$250 – $500 USD</option><option>Más de $500 USD</option><option>A definir</option></select>
       </div>
-      <div class="form-group"><label>Mensaje *</label><textarea placeholder="Cuéntame sobre tu proyecto, marca, objetivos y cualquier referencia que tengas..." required></textarea></div>
-      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Enviar mensaje →</button>
+      <div class="form-group"><label>Mensaje *</label><textarea placeholder="Cuéntame sobre tu proyecto, marca, objetivos y referencias..." required></textarea></div>
+      <button type="submit" class="btn btn-primary" style="width:100%;font-size:.85rem;padding:1rem">Enviar mensaje →</button>
     </form>
-    <p style="font-size:.75rem;color:var(--muted);margin-top:1rem;text-align:center">También puedes escribirme directo por <a href="https://wa.me/573025368303" style="color:var(--terra);text-decoration:none">WhatsApp</a> o <a href="mailto:Mariainesluces20@gmail.com" style="color:var(--terra);text-decoration:none">Email</a></p>
+    <p style="font-size:.74rem;color:var(--muted);margin-top:1rem;text-align:center">También por <a href="https://wa.me/573025368303" style="color:var(--terra);text-decoration:none">WhatsApp</a> o <a href="mailto:Mariainesluces20@gmail.com" style="color:var(--terra);text-decoration:none">Email</a></p>
   </div>
 </div>
 
-<div class="availability">
-  <div><p style="font-size:.95rem;color:var(--deep)"><span class="avail-dot"></span><strong>Disponible para nuevos proyectos</strong></p><p style="font-size:.82rem;color:var(--muted);margin-top:.3rem">Respondo en menos de 24 horas · Zona horaria: Colombia (UTC-5)</p></div>
-  <div style="display:flex;gap:2rem;flex-wrap:wrap">
-    <div style="text-align:center"><div style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--terra)">24h</div><div style="font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)">Tiempo de resp.</div></div>
-    <div style="text-align:center"><div style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--terra)">100%</div><div style="font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)">Remoto</div></div>
+<div class="avail-bar">
+  <div><p style="font-size:.92rem;color:var(--deep)"><span class="avail-dot"></span><strong>Disponible para nuevos proyectos</strong></p><p style="font-size:.8rem;color:var(--muted);margin-top:.25rem">Respondo en menos de 24h · Colombia (UTC-5)</p></div>
+  <div class="avail-stats">
+    <div><div class="avail-stat-num">24h</div><div class="avail-stat-lbl">Respuesta</div></div>
+    <div><div class="avail-stat-num">100%</div><div class="avail-stat-lbl">Remoto</div></div>
   </div>
 </div>
 </main>
-
 <script>
-function handleSubmit(e){
-  e.preventDefault();
-  const btn=e.target.querySelector('button[type=submit]');
-  btn.textContent='¡Mensaje enviado! ✓';
-  btn.style.background='#5cb85c';
-  btn.disabled=true;
-  setTimeout(()=>{btn.textContent='Enviar mensaje →';btn.style.background='';btn.disabled=false;e.target.reset();},4000);
-}
+function handleSubmit(e){e.preventDefault();var b=e.target.querySelector('button[type=submit]');b.textContent='¡Mensaje enviado! ✓';b.style.background='#5cb85c';b.disabled=true;setTimeout(function(){b.textContent='Enviar mensaje →';b.style.background='';b.disabled=false;e.target.reset();},4000);}
 </script>
 <footer>
-  <p>© 2025 <span>Maria Luces</span> — Diseñadora Gráfica Freelancer · 
-  <a href="mailto:Mariainesluces20@gmail.com">Mariainesluces20@gmail.com</a> · 
-  <a href="https://wa.me/573025368303">WhatsApp</a></p>
+  <p>© 2025 <span>Maria Luces</span> — Diseñadora Gráfica Freelancer</p>
+  <p style="margin-top:.4rem"><a href="mailto:Mariainesluces20@gmail.com">Mariainesluces20@gmail.com</a> · <a href="https://wa.me/573025368303">WhatsApp</a> · <a href="https://instagram.com/lucesmariia">@lucesmariia</a></p>
 </footer></body></html>
